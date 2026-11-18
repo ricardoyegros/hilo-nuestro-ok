@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gracias por tu compra · Hilo Nuestro</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#F6EFE4">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root { --crema:#F6EFE4; --tinta:#3B2F2A; --terracota:#B5483A; --terracota-h:#9E3D30; --arena:#EBDFCB; --arena-d:#CDBA9C; --gris:#6F6058; --rosa:#F3C7BD; --abeto:#46594A; --dorado:#D9A94B; color-scheme: light; }
+@font-face { font-family:"Pagella"; src:url("fonts/TeXGyrePagella-Regular.woff") format("woff"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Pagella"; src:url("fonts/TeXGyrePagella-Italic.woff") format("woff"); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:"Chorus"; src:url("fonts/TeXGyreChorus-MediumItalic.woff") format("woff"); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:"Lora"; src:url("fonts/Lora-Variable.woff") format("woff"); font-weight:400 700; font-display:swap; }
+*, *::before, *::after { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--crema); color:var(--tinta); font:400 17px/1.65 "Lora", Georgia, serif; -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; flex-direction:column; overflow-x:hidden; }
+p, h1, h2, ul { margin:0; } ul { padding:0; list-style:none; }
+a { color:inherit; }
+:focus-visible { outline:2px solid var(--terracota); outline-offset:3px; }
+.head { padding:22px max(20px, env(safe-area-inset-right, 0px)) 8px max(20px, env(safe-area-inset-left, 0px)); text-align:center; }
+.head img { width:150px; margin-inline:auto; }
+main { flex:1; width:min(100%, 600px); margin-inline:auto; padding:18px max(20px, env(safe-area-inset-right, 0px)) 56px max(20px, env(safe-area-inset-left, 0px)); text-align:center; position:relative; }
+
+/* sello: hilo que cae y anillo que se completa con un tilde */
+.sello { width:96px; height:96px; margin:10px auto 22px; position:relative; }
+.sello svg { width:100%; height:100%; overflow:visible; }
+.sello .anillo { fill:none; stroke:var(--terracota); stroke-width:3.5; stroke-linecap:round; }
+.sello .tilde { fill:none; stroke:var(--terracota); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.sello .hilo { stroke:var(--terracota); stroke-width:3; stroke-linecap:round; }
+.sello .fondo { fill:var(--arena); }
+.anim .sello .hilo { stroke-dasharray:60; stroke-dashoffset:60; animation:trazo .45s cubic-bezier(.45,0,.2,1) .05s forwards; }
+.anim .sello .anillo { stroke-dasharray:240; stroke-dashoffset:240; animation:trazo .7s cubic-bezier(.45,0,.2,1) .4s forwards; }
+.anim .sello .tilde { stroke-dasharray:60; stroke-dashoffset:60; animation:trazo .4s ease .95s forwards; }
+.anim .sello .fondo { opacity:0; animation:aparece .5s ease .5s forwards; }
+.cargando .sello .anillo { stroke-dasharray:50 190; animation:gira 1.1s linear infinite; transform-origin:50px 62px; stroke-dashoffset:0; }
+.cargando .sello .tilde { display:none; }
+@keyframes trazo { to { stroke-dashoffset:0; } }
+@keyframes aparece { to { opacity:1; } }
+@keyframes gira { to { transform:rotate(360deg); } }
+@keyframes sube { from { opacity:0; translate:0 14px; } to { opacity:1; translate:0 0; } }
+.anim .sube { opacity:0; animation:sube .7s ease forwards; }
+.anim .sube.d1 { animation-delay:.9s; } .anim .sube.d2 { animation-delay:1.1s; } .anim .sube.d3 { animation-delay:1.3s; } .anim .sube.d4 { animation-delay:1.5s; }
+.cargando .sube, .cargando.anim .sube { animation-delay:0s; }
+
+h1 { font-family:"Pagella", Palatino, Georgia, serif; font-weight:400; font-size:clamp(2.1rem, 8vw, 3rem); line-height:1.12; text-wrap:balance; letter-spacing:-.005em; }
+h1 em { font-family:"Chorus", Georgia, serif; font-style:italic; color:var(--terracota); font-size:1.3em; line-height:0; }
+.lead { margin-top:1.1rem; font-size:1.1rem; }
+.correo { display:inline-flex; align-items:center; gap:.6rem; margin:1.1rem 0 .2rem; background:var(--arena); border:1px solid var(--arena-d); border-radius:3px; padding:.8rem 1.1rem; font-weight:600; font-size:1.02rem; max-width:100%; word-break:break-all; }
+.correo svg { width:20px; height:20px; flex:none; stroke:var(--terracota); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.chica { font-size:.92rem; color:var(--gris); margin-top:.9rem; }
+.pasos { margin:2.2rem 0 0; text-align:left; border-top:1px solid var(--arena-d); }
+.pasos li { display:grid; grid-template-columns:2.6rem minmax(0, 1fr); gap:.6rem; padding:1rem 0; border-bottom:1px dotted var(--arena-d); }
+.pasos .n { font-family:"Chorus", Georgia, serif; font-style:italic; font-size:2.2rem; line-height:1; color:var(--terracota); }
+.pasos b { font-weight:600; }
+.acciones { margin-top:2rem; display:flex; flex-wrap:wrap; gap:.8rem; justify-content:center; }
+.btn { display:inline-flex; align-items:center; justify-content:center; background:var(--terracota); color:var(--crema); border-radius:2px; font:600 .8rem/1.2 "Lora", serif; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; padding:1.05rem 1.7rem; min-height:50px; transition:background .15s, translate .2s; border:0; cursor:pointer; }
+.btn:hover { background:var(--terracota-h); translate:0 -2px; }
+.btn--linea { background:transparent; color:var(--terracota); box-shadow:inset 0 0 0 1.5px var(--terracota); }
+.btn--linea:hover { background:var(--terracota); color:var(--crema); }
+.estado[hidden] { display:none; }
+.aviso { margin-top:1.4rem; background:#fff7f0; border:1px dotted var(--terracota); border-radius:3px; padding:1rem 1.1rem; text-align:left; font-size:.97rem; }
+.demo { position:fixed; left:0; right:0; bottom:0; background:var(--tinta); color:var(--rosa); text-align:center; font-size:.78rem; letter-spacing:.06em; padding:.55rem 1rem calc(.55rem + env(safe-area-inset-bottom, 0px)); z-index:5; }
+@media (prefers-reduced-motion: reduce) { .btn { transition:none; } }
+</style>
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("anim")}catch(e){}</script>
+</head>
+<body>
+<header class="head"><a href="/" aria-label="Hilo Nuestro"><img src="brand/hilo-nuestro_color.svg" width="233" height="44" alt="Hilo Nuestro"></a></header>
+
+<main id="main" class="cargando">
+  <div class="sello" aria-hidden="true">
+    <svg viewBox="0 0 100 130">
+      <line class="hilo" x1="50" y1="-30" x2="50" y2="14"/>
+      <circle class="fondo" cx="50" cy="62" r="46"/>
+      <circle class="anillo" cx="50" cy="62" r="46"/>
+      <path class="tilde" d="M30 63 L45 78 L71 48"/>
+    </svg>
+  </div>
+
+  <!-- confirmando -->
+  <section class="estado" id="e-confirmando" role="status" aria-live="polite">
+    <h1>Estamos confirmando tu <em>pago</em></h1>
+    <p class="lead">Dame un momento: apenas Mercado Pago lo confirme te mandamos los libros. No cierres esta página.</p>
+    <p class="chica" id="tardando" hidden>Está tardando más de lo normal. No te preocupes: apenas se confirme, el mail te llega igual. Si pasan más de 15 minutos, escribinos.</p>
+  </section>
+
+  <!-- entregado -->
+  <section class="estado" id="e-entregado" hidden role="status" aria-live="polite">
+    <h1 class="sube d1">¡Gracias por tu <em>compra</em>!</h1>
+    <p class="lead sube d2">Ya te enviamos <b>Mucho gusto, mamá</b> y <b>Nuestra Navidad</b> al correo que escribiste:</p>
+    <p class="sube d2"><span class="correo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span id="mail-compra">tu@mail.com</span></span></p>
+    <p class="chica sube d3">Puede tardar un par de minutos en llegar. Si no lo ves, revisá spam o promociones. ¿Te equivocaste de mail? <a href="#" data-contacto>Escribinos</a> y lo corregimos.</p>
+    <ul class="pasos sube d3">
+      <li><span class="n">1</span><p><b>Abrí el mail</b> y descargá los dos PDF adjuntos.</p></li>
+      <li><span class="n">2</span><p><b>Imprimilos en tamaño A5</b> (en tu casa o en una copistería) o abrilos en una tablet para escribir con lápiz.</p></li>
+      <li><span class="n">3</span><p><b>Regalaselo a ella</b> y empiecen por la pregunta que más les guste.</p></li>
+    </ul>
+    <div class="acciones sube d4"><a class="btn btn--linea" href="/">Volver al inicio</a></div>
+  </section>
+
+  <!-- pendiente de acreditación -->
+  <section class="estado" id="e-pendiente" hidden role="status" aria-live="polite">
+    <h1>Tu pago está <em>pendiente</em></h1>
+    <p class="lead">Mercado Pago todavía no acreditó el pago (pasa con transferencias y pagos en efectivo). Apenas se acredite, los libros llegan al correo que escribiste:</p>
+    <p><span class="correo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="mail-compra">tu@mail.com</span></span></p>
+    <p class="chica">Podés cerrar esta página: no hace falta que hagas nada más.</p>
+  </section>
+
+  <!-- rechazado -->
+  <section class="estado" id="e-rechazado" hidden role="status" aria-live="polite">
+    <h1>No pudimos <em>procesar</em> el pago</h1>
+    <p class="lead">Mercado Pago no aprobó el pago, así que no se hizo ningún cobro. Podés intentar de nuevo con otro medio de pago.</p>
+    <div class="acciones"><a class="btn" href="/#comprar">Volver a intentar</a></div>
+  </section>
+
+  <!-- error al enviar -->
+  <section class="estado" id="e-error_envio" hidden role="status" aria-live="polite">
+    <h1>Tu pago está <em>confirmado</em></h1>
+    <p class="lead">Tuvimos un problema al enviarte el mail y ya lo estamos resolviendo. Los libros llegan a:</p>
+    <p><span class="correo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="mail-compra">tu@mail.com</span></span></p>
+    <p class="aviso">Si en unos minutos no llegan, <a href="#" data-contacto>escribinos</a> y te los mandamos a mano.</p>
+  </section>
+
+  <!-- reembolsado / revisar / sin pedido -->
+  <section class="estado" id="e-reembolsado" hidden><h1>Esta compra fue <em>reembolsada</em></h1><p class="lead">Si tenés dudas, <a href="#" data-contacto>escribinos</a>.</p></section>
+  <section class="estado" id="e-revisar" hidden><h1>Estamos <em>revisando</em> tu pago</h1><p class="lead">Hay un detalle en tu pago que tenemos que verificar. <a href="#" data-contacto>Escribinos</a> y lo resolvemos enseguida.</p></section>
+  <section class="estado" id="e-desconocido" hidden><h1>No encontramos <em>tu pedido</em></h1><p class="lead">Si ya pagaste, revisá tu correo: ahí está todo. Si no, <a href="#" data-contacto>escribinos</a>.</p><div class="acciones"><a class="btn btn--linea" href="/">Volver al inicio</a></div></section>
+</main>
+
+<div class="demo" id="demo" hidden>VISTA PREVIA · datos de ejemplo</div>
+
+<script>
+var CONFIG = {
+  CONTACTO_EMAIL: ""   // ej. "hola@tudominio.com.ar"  (el mismo que en la landing)
+};
+
+(function () {
+  var d = document.documentElement, main = document.getElementById("main");
+  var qs = new URLSearchParams(location.search);
+  var demo = qs.get("demo") || (window.__PREVIEW__ ? (window.__ESTADO__ || "entregado") : "");
+  var ord = qs.get("o") || "", pago = qs.get("payment_id") || qs.get("collection_id") || "";
+  var intentos = 0, MAX = 40; // ~2 minutos esperando confirmación
+
+  [].forEach.call(document.querySelectorAll("[data-contacto]"), function (a) {
+    a.href = CONFIG.CONTACTO_EMAIL ? "mailto:" + CONFIG.CONTACTO_EMAIL : "/#comprar";
+  });
+
+  function mostrar(estado, datos) {
+    var cargando = estado === "confirmando";
+    main.classList.toggle("cargando", cargando);
+    [].forEach.call(document.querySelectorAll(".estado"), function (s) { s.hidden = s.id !== "e-" + estado; });
+    if (!document.getElementById("e-" + estado)) document.getElementById("e-desconocido").hidden = false;
+    var mail = (datos && datos.email) || "";
+    var m = document.getElementById("mail-compra"); if (m) m.textContent = mail;
+    [].forEach.call(document.querySelectorAll(".mail-compra"), function (x) { x.textContent = mail; });
+    if (estado === "entregado") {
+      document.title = "¡Gracias por tu compra! · Hilo Nuestro";
+      // Evento de compra para Meta (una sola vez por pedido y solo con compras reales)
+      if (!demo && ord && datos && datos.monto) {
+        try {
+          var k = "hn_purchase_" + ord;
+          if (!localStorage.getItem(k)) { localStorage.setItem(k, "1"); if (window.fbq) window.fbq("track", "Purchase", { value: datos.monto, currency: "ARS" }); }
+        } catch (e) {}
+      }
+    }
+  }
+
+  function consultar() {
+    var url = "/api/estado?o=" + encodeURIComponent(ord) + (pago ? "&payment_id=" + encodeURIComponent(pago) : "");
+    fetch(url, { cache: "no-store" })
+      .then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (x) {
+        if (x.s === 404) return mostrar("desconocido");
+        mostrar(x.j.estado, x.j);
+        if (x.j.estado === "confirmando") {
+          if (++intentos >= MAX) { document.getElementById("tardando").hidden = false; return; }
+          setTimeout(consultar, 3000);
+        }
+      })
+      .catch(function () { if (++intentos < MAX) setTimeout(consultar, 4000); else document.getElementById("tardando").hidden = false; });
+  }
+
+  if (demo) {
+    document.getElementById("demo").hidden = false;
+    mostrar(demo, { email: qs.get("email") || "valentina.gomez@gmail.com", monto: 19999 });
+  } else if (!ord) {
+    mostrar("desconocido");
+  } else {
+    mostrar("confirmando");
+    consultar();
+  }
+})();
+</script>
+</body>
+</html>

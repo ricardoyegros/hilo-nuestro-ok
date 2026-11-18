@@ -1,0 +1,39 @@
+# Configuración de Cloudflare Pages para Hilo Nuestro.
+# Acá van las variables NO secretas. Los secretos (tokens y claves) se cargan aparte, ver README.md.
+name = "hilo-nuestro"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "public"
+
+# Base de datos D1 (ventas, eventos, gastos). Creala con:  npx wrangler d1 create hilo-nuestro
+[[d1_databases]]
+binding = "DB"
+database_name = "hilo-nuestro"
+database_id = "COMPLETAR-CON-EL-ID-QUE-TE-DA-WRANGLER"
+
+# Bucket R2 privado con los dos PDFs. Creá el bucket y subí los archivos (ver README.md).
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "hilo-libros"
+
+[vars]
+# ---- Tu sitio ----
+SITE_URL = "https://COMPLETAR-TU-DOMINIO.com.ar"      # sin barra final. Tiene que ser el dominio real (https)
+PRICE_ARS = "19999"                                   # precio en pesos, número entero. Es el precio REAL que se cobra
+PRODUCT_NAME = "Mucho gusto, mamá (libro digital) + Nuestra Navidad"
+# ---- Mail (Resend) ----
+FROM_EMAIL = "Hilo Nuestro <libros@COMPLETAR-TU-DOMINIO.com.ar>"   # debe ser de un dominio verificado en Resend
+REPLY_TO = "hola@COMPLETAR-TU-DOMINIO.com.ar"        # donde te responden las compradoras
+# ---- Panel de administración (Cloudflare Access) ----
+ADMIN_EMAILS = "tu-mail@gmail.com"                    # mails con permiso (separados por coma)
+CF_ACCESS_TEAM_DOMAIN = "COMPLETAR.cloudflareaccess.com"  # tu "team domain" de Zero Trust
+CF_ACCESS_AUD = "COMPLETAR-CON-EL-AUD-DE-TU-APLICACION-ACCESS"
+# ---- Opcionales ----
+MP_FEE_PCT = "6.29"            # comisión de Mercado Pago (%) según el plazo de cobro que elijas. Solo afecta el "neto estimado"
+DOWNLOAD_DAYS = "30"           # cuántos días valen los links de descarga de respaldo
+MAX_DOWNLOADS = "10"           # máximo de descargas por orden con el link de respaldo
+MAIL_ATTACH_MODE = "path"      # "path" (recomendado) o "inline" si Resend no logra adjuntar desde el link
+MP_USAR_SANDBOX_URL = "0"      # "1" solo si probás con credenciales de prueba que requieren sandbox_init_point
+MP_WEBHOOK_ESTRICTO = "1"      # "0" solo para diagnosticar firmas en pruebas. En producción dejalo en "1"
+FILE_LIBRO = "Mucho-gusto-mama.pdf"      # nombre del archivo dentro del bucket R2
+FILE_NAVIDAD = "Nuestra-Navidad.pdf"
+# ALLOWED_ORIGINS = "https://hilo-nuestro.pages.dev"   # otros orígenes que pueden iniciar el pago (por ejemplo la URL de prueba de Pages)
